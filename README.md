@@ -3,7 +3,7 @@
 [![build status][travis-image]][travis-url]
 [![Test coverage][coveralls-image]][coveralls-url]
 
-A middleware stack for the client built with generators. WIP, do not use.
+Middleware stack for the client. Leverages ES6 generators. WIP, do not use.
 
 ## Installation
 ```bash
