@@ -2,9 +2,10 @@ SRC = lib/*.js
 
 include node_modules/make-lint/index.mk
 
+LINT_CONFIG = .eslintrc
 TESTS = test/
 
-test:
+test: lint
 	@NODE_ENV=test ./node_modules/.bin/mocha \
 		--require should \
 		--harmony-generators \
