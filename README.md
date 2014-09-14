@@ -4,6 +4,8 @@
 [![Test coverage][coveralls-image]][coveralls-url]
 
 Middleware stack for the client. Leverages ES6 generators. WIP, do not use.
+Based off the brilliant work done in [Koa](koajs.com).
+
 
 ## Installation
 ```bash
@@ -20,11 +22,6 @@ store.use(function *(next) {
   // get stuff from a db
 });
 
-fax({
-  method: 'get',
-  store: 'user'
-});
-// returns stuff from the db
 ```
 
 ## API
@@ -41,6 +38,12 @@ Attach new middleware to fax.
 store.use(function *(next) {
 
 });
+```
+
+#### store.start()
+Start listening for new events.
+```js
+store.start();
 ```
 
 ## License

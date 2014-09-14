@@ -11,14 +11,32 @@ var fax = require('../lib/index');
  */
 
 describe('fax()', function() {
-  it('should do awesome things!', function() {
+  it('should assert argument types', function() {
+    var store = fax();
+    store.use.bind(store, function(){})
+      .should.throw('app.use() requires a generator function');
+  });
+});
+
+describe('.use()', function() {
+  it('should chain middleware', function() {
     var store = fax();
     var i = 0;
+
+    store.use(function *(next) {
+      i += 2;
+      yield next;
+      i.should.eql(4);
+    });
+
     store.use(function *() {
-      i = 2;
+      i += 2;
     });
 
     store.start();
-    i.should.eql(2);
   });
+});
+
+describe('.start', function() {
+  it('should accept arguments');
 });
