@@ -40,6 +40,18 @@ store.use(function *(next) {
 });
 ```
 
+#### store.stores=
+Set stores object, useful for attaching listeners and saving data.
+```js
+var store = require('simple-store');
+
+store.stores = {
+  user: store('user'),
+  count: store('count'),
+  path: store('path')
+};
+```
+
 #### store.go(opts, cb)
 Call the stores and pass it options.
 ```js
