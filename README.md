@@ -40,13 +40,19 @@ store.use(function *(next) {
 });
 ```
 
-#### store.req(name, opts)
+#### store.go(opts, cb)
 Call the stores and pass it options.
 ```js
-store.req({
+var opts = {
   method: 'get',
   name: 'books'
-});
+};
+
+function cb(res) {
+  console.log(res);
+}
+
+store.go(opts, cb);
 ```
 
 ## License
