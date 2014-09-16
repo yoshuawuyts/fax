@@ -40,10 +40,13 @@ store.use(function *(next) {
 });
 ```
 
-#### store.start()
-Start listening for new events.
+#### store.req(name, opts)
+Call the stores and pass it options.
 ```js
-store.start();
+store.req({
+  method: 'get',
+  name: 'books'
+});
 ```
 
 ## License
