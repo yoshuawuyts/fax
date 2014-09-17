@@ -10,7 +10,7 @@ var fax = require('../lib/index');
  * Test
  */
 
-describe('fax()', function() {
+describe('store = fax()', function() {
   it('should assert argument types', function() {
     var store = fax();
     store.use.bind(store, function(){})
@@ -18,7 +18,7 @@ describe('fax()', function() {
   });
 });
 
-describe('.use()', function() {
+describe('store.use()', function() {
   it('should chain middleware', function() {
     var store = fax();
     var i = 0;
@@ -36,8 +36,17 @@ describe('.use()', function() {
   });
 });
 
-describe('.go', function() {
-  it('should assert argument types');
+describe('store.go()', function() {
+  it('should assert argument types', function() {
+    var store = fax();
+
+    store.go.bind(store, 'asdf')
+      .should.throw('Request should be an object');
+
+    store.go.bind(store, {})
+      .should.not.throw();
+  });
+
   it('should correctly execute middleware', function(done) {
     var store = fax();
 
