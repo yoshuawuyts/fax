@@ -4,7 +4,7 @@
 [![Test coverage][coveralls-image]][coveralls-url]
 
 Middleware stack for the client. Leverages ES6 generators. WIP, do not use.
-Based off the brilliant work done in [Koa](koajs.com).
+Based off the brilliant work done in [Koa](http://koajs.com).
 
 
 ## Installation
