@@ -2,7 +2,7 @@
   "name": "fax",
   "version": "1.0.0",
   "description": "Middleware stack for the client.",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "make test"
   },
@@ -15,12 +15,23 @@
     "web"
   ],
   "license": "MIT",
+  "browserify": {
+    "transform": [
+      "es6ify"
+    ]
+  },
   "dependencies": {
     "co": "^3.1.0",
     "debug": "^2.0.0",
-    "koa-compose": "^2.3.0"
+    "es6ify": "^1.4.0",
+    "koa-compose": "^2.3.0",
+    "min-document": "^2.12.0",
+    "process": "^0.5.2",
+    "trim": "0.0.1",
+    "xhr": "^1.16.1"
   },
   "devDependencies": {
+    "browserify": "^5.12.1",
     "coveralls": "^2.10.0",
     "istanbul": "^0.2.11",
     "make-lint": "^1.0.1",

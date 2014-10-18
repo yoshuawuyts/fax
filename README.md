@@ -54,30 +54,30 @@ mw.go(null, function(err, res, body) {
 ```
 
 ## API
-#### mw = fax()
+#### var app = fax()
 Initialize a new fax instance.
 ```js
 var fax = require('fax');
-var mw = fax();
+var app = fax();
 ```
 
-#### mw.use(generatorFn)
+#### app.use(generatorFn)
 Attach new middleware to fax. Takes a generator function as an argument.
 ```js
 var logger = require('koa-logger');
 
 // logger
 
-store.use(logger);
+app.use(logger);
 
 // response
 
-store.use(function *(next) {
+app.use(function *(next) {
   this.body = 'Hello World';
 });
 ```
 
-#### mw.go(opts, cb)
+#### app.go(opts, cb)
 Start the middleware and pass it options. Optionally takes a callback that is fired
 after every pass through.
 ```js
@@ -88,7 +88,7 @@ var opts = {
 
 // Start the middleware.
 
-mw.go(opts, function(res) {
+app.go(opts, function(res) {
   console.log(res);
 });
 ```
