@@ -3,8 +3,8 @@ SRC = lib/*.js
 include node_modules/make-lint/index.mk
 
 LINT_CONFIG = .eslintrc
-TESTS = test/* \
-				test/request/*
+TESTS = test/index \
+	test/request/* 
 
 test:
 	@NODE_ENV=test ./node_modules/.bin/mocha \

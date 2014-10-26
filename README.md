@@ -20,11 +20,11 @@ Based off the brilliant work done in [Koa](http://koajs.com).
 ```
 
 ## Installation
-```bash
-$ npm i --save fax
+```sh
+npm install fax
 ```
 
-## Overview
+## Usage
 ```js
 var logger = require('koa-logger');
 var xhr = require('fax-xhr');
@@ -48,10 +48,7 @@ mw.use(xhr('localhost:3000'));
 
 // start a request
 
-mw.go(null, function(err, res, body) {
-  console.log(body);
-});
-
+mw.go();
 ```
 
 ## API

@@ -54,6 +54,8 @@ describe('app.go()', function() {
       this.req.count += 1;
       yield next;
       this.res.count += 1;
+      this.res.count.should.eql(3);
+      done();
     });
 
     app.use(function *(next) {
@@ -61,9 +63,6 @@ describe('app.go()', function() {
       yield next;
     });
 
-    app.go({count: 1}, function(res) {
-      res.count.should.eql(3);
-      done();
-    });
+    app.go({count: 1});
   });
 });

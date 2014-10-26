@@ -4,26 +4,16 @@
  * Module dependencies
  */
 
-var fax = require('../../lib/index');
+var context = require('../context');
 
 /**
  * Test
  */
 
 describe('ctx.url()', function() {
-  it('should set an url', function(done) {
-    var store = fax();
-    store.use(function *(next){
-      this.req.url.should.eql('foo');
-      yield next;
-      this.req.url.should.eql('bar');
-    });
-
-    store.use(function *(next){
-      this.req.url = 'bar';
-      yield next;
-    });
-
-    store.go({url: 'foo'}, function() {done()});
+  it('should set an url', function() {
+    var ctx = context();
+    ctx.url = 'foo';
+    ctx.url.should.eql('foo');
   });
 });
