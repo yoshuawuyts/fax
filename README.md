@@ -79,15 +79,9 @@ app.use(function *(next) {
 Start the middleware and pass it options. Optionally takes a callback that is fired
 after every pass through.
 ```js
-var opts = {
+app.go({
   method: 'get',
   name: 'books'
-};
-
-// Start the middleware.
-
-app.go(opts, function(res) {
-  console.log(res);
 });
 ```
 
