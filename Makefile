@@ -4,7 +4,8 @@ include node_modules/make-lint/index.mk
 
 LINT_CONFIG = .eslintrc
 TESTS = test/index \
-	test/request/* 
+	test/xhr\
+	test/request/*
 
 test:
 	@NODE_ENV=test ./node_modules/.bin/mocha \

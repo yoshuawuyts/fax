@@ -4,7 +4,7 @@
 [![Test coverage][coveralls-image]][coveralls-url]
 [![Downloads][downloads-image]][downloads-url]
 
-Middleware stack for the client. Leverages ES6 generators. WIP, do not use.
+Middleware stack for the client leveraging ES6 generators.
 Based off the brilliant work done in [Koa](http://koajs.com).
 ```
 ╔═════╗        ╔════════════╗       ╔════════╗       ╔═════════════════╗
@@ -27,28 +27,24 @@ npm install fax
 ## Usage
 ```js
 var logger = require('koa-logger');
-var xhr = require('fax-xhr');
 var fax = require('fax');
-
 var mw = fax();
 
 // logger
 
-mw.use(logger);
+mw.use(logger());
 
 // set `ctx.body`
 
-mw.use(function *(){
+mw.use(function *(next) {
+  this.url = 'http://mysite.com'
   this.body = 'Hello World';
+  yield next;
 });
 
-// request
+// send
 
-mw.use(xhr('localhost:3000'));
-
-// start a request
-
-mw.go();
+mw.send();
 ```
 
 ## API
@@ -62,24 +58,15 @@ var app = fax();
 #### app.use(generatorFn)
 Attach new middleware to fax. Takes a generator function as an argument.
 ```js
-var logger = require('koa-logger');
-
-// logger
-
-app.use(logger);
-
-// response
-
 app.use(function *(next) {
   this.body = 'Hello World';
 });
 ```
 
-#### app.go(opts, cb)
-Start the middleware and pass it options. Optionally takes a callback that is fired
-after every pass through.
+#### app.send(opts)
+Start fax and pass it options.
 ```js
-app.go({
+app.send({
   method: 'get',
   name: 'books'
 });

@@ -32,18 +32,18 @@ describe('app.use()', function() {
       i += 2;
     });
 
-    app.go({}, function(){});
+    app.send();
   });
 });
 
-describe('app.go()', function() {
+describe('app.send()', function() {
   it('should assert argument types', function() {
     var app = fax();
 
-    app.go.bind(app, 'asdf')
+    app.send.bind(app, 'asdf')
       .should.throw('Request should be an object');
 
-    app.go.bind(app, {})
+    app.send.bind(app, {})
       .should.not.throw();
   });
 
@@ -63,6 +63,6 @@ describe('app.go()', function() {
       yield next;
     });
 
-    app.go({count: 1});
+    app.send({count: 1});
   });
 });
