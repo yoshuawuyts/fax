@@ -28,21 +28,14 @@ npm install fax
 ```js
 var logger = require('koa-logger');
 var fax = require('fax');
-var mw = fax();
+var app = fax();
 
-// logger
-
-mw.use(logger());
-
-// set `ctx.body`
-
-mw.use(function *(next) {
+app.use(logger());
+app.use(function *(next) {
   this.url = 'http://mysite.com'
   this.body = 'Hello World';
   yield next;
 });
-
-// send
 
 mw.send();
 ```
