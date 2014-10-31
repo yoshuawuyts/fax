@@ -25,6 +25,7 @@
     "debug": "^2.0.0",
     "delegates": "^0.1.0",
     "es6ify": "^1.4.0",
+    "http-errors": "^1.2.7",
     "koa-compose": "^2.3.0",
     "xhr": "^1.16.1"
   },
