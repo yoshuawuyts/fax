@@ -4,7 +4,10 @@
  * Module dependencies
  */
 
+var stderr = require('test-console').stderr;
 var fax = require('../lib/index');
+var assert = require('assert');
+var AssertionError = assert.AssertionError;
 
 /**
  * Test
@@ -68,8 +71,8 @@ describe('app.send()', function() {
 });
 
 describe('app.onerror(err)', function() {
-    it('should throw an error if a non-error is given', function() {
-    var app = koa();
+  it('should throw an error if a non-error is given', function() {
+    var app = fax();
 
     try {
       app.onerror('foo');
@@ -78,5 +81,43 @@ describe('app.onerror(err)', function() {
       err.should.be.instanceOf(AssertionError);
       err.message.should.equal('non-error thrown: foo');
     }
+  });
+
+  it('should do nothing if status is 404', function() {
+    var app = fax();
+    var err = new Error();
+
+    err.status = 404;
+
+    var output = stderr.inspectSync(function() {
+      app.onerror(err);
+    });
+
+    output.should.eql([]);
+  })
+
+  it('should do nothing if env is test', function() {
+    var app = fax();
+    var err = new Error();
+
+    var output = stderr.inspectSync(function() {
+      app.onerror(err);
+    });
+
+    output.should.eql([]);
+  })
+
+  it('should log the error to stderr', function() {
+    var app = fax();
+    app.env = 'dev';
+
+    var err = new Error();
+    err.stack = 'Foo';
+
+    var output = stderr.inspectSync(function() {
+      app.onerror(err);
+    });
+
+    output.should.eql(["\n", "  Foo\n", "\n"]);
   })
 });
