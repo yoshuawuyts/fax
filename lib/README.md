@@ -5,15 +5,15 @@ run generators in the browsers without a problem.
 
 ## Architecture
 ```
-╔════╗         ╔═════════╗          ╔════════════╗         ╔═════╗
-║ Go ║<────────║ Respond ║<─────────║ Middleware ║<────────║ XHR ║
-╚════╝         ╚═════════╝          ╚════════════╝         ╚═════╝
-  │                ^ │     ╔═══════╗     ^ │     ╔═══════╗    ^
-  └────────────────┘ └────>║ Yield ║─────┘ └────>║ Yield ║────┘
-                           ╚═══════╝             ╚═══════╝
+╔══════╗           ╔════════════╗         ╔═════╗
+║ Send ║<──────────║ Middleware ║<────────║ XHR ║
+╚══════╝           ╚════════════╝         ╚═════╝
+  │       ╔═══════╗     ^ │     ╔═══════╗    ^
+  └──────>║ Yield ║─────┘ └────>║ Yield ║────┘
+          ╚═══════╝             ╚═══════╝
 ```
 
-Within `fax` all calls are initiated by calling `.go` which then
+Within `fax` all calls are initiated by calling `.send` which then
 starts the propagation of data through the middleware stack. Unless
 returned early all requests have their turning point at `xhr` which
 issues requests to the server. There are helper methods available
