@@ -66,3 +66,17 @@ describe('app.send()', function() {
     app.send({count: 1});
   });
 });
+
+describe('app.onerror(err)', function() {
+    it('should throw an error if a non-error is given', function() {
+    var app = koa();
+
+    try {
+      app.onerror('foo');
+      should.fail();
+    } catch (err) {
+      err.should.be.instanceOf(AssertionError);
+      err.message.should.equal('non-error thrown: foo');
+    }
+  })
+});
