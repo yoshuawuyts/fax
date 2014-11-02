@@ -13,8 +13,11 @@ var err = false;
  */
 
 function xhrStub(opts, cb) {
-  if (err) return cb('boom');
-  cb();
+  if (err) return cb('boom', 'foo', 'bar');
+  cb(null, {
+    headers: {},
+    body: 'foo'
+  }, 'bar');
 }
 
 afterEach(function() {
