@@ -6,7 +6,6 @@
 
 var proxyquire = require('proxyquire');
 var fax = proxyquire('../lib/index', {xhr: xhrStub, '@noCallThru': true});
-var errMsg = null;
 var err = false;
 
 /**
@@ -14,19 +13,12 @@ var err = false;
  */
 
 function xhrStub(opts, cb) {
-  if (err) {
-    try {
-      return cb('boom');
-    } catch(e) {
-      errMsg = e;
-    }
-  }
+  if (err) return cb('boom');
   cb();
 }
 
 afterEach(function() {
   err = false;
-  errMsg = null;
 });
 
 /**
@@ -45,9 +37,18 @@ describe('xhr', function() {
     app.send();
   });
 
-  it('should handle xhr errors', function() {
+  it('should handle xhr errors', function(done) {
     var app = fax();
     err = true;
+
+    app.use(function *(next) {
+      try {
+        yield next;
+      } catch(e) {
+        e.should.eql('boom')
+        done();
+      }
+    });
 
     app.use(function *(next) {
       this.url = 'localhost:3000';
@@ -55,6 +56,7 @@ describe('xhr', function() {
     });
 
     app.send(app);
-    errMsg.message.should.eql('boom');
   });
+
+  it('should halt execution until the request completes');
 });
