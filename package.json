@@ -27,7 +27,6 @@
     "es6ify": "^1.4.0",
     "http-errors": "^1.2.7",
     "koa-compose": "^2.3.0",
-    "thunkify": "^2.1.2",
     "xhr": "^1.16.1"
   },
   "devDependencies": {
