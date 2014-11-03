@@ -6,6 +6,10 @@
 
 Middleware stack for the client leveraging ES6 generators.
 Based off the brilliant work done in [Koa](http://koajs.com).
+
+In order to run `fax` in today's browsers you need to provide a
+[setimmediate][setimmediate] shim and preprocess es6 generators to es5
+compatible code. Using [koaify][koaify] is recommended for this.
 ```
 ╔═════╗        ╔════════════╗       ╔════════╗       ╔═════════════════╗
 ║ API ║<──────>║ Middleware ║──────>║ Stores ║──────>║ View Components ║
@@ -32,7 +36,7 @@ var app = fax();
 
 app.use(logger());
 app.use(function *(next) {
-  this.url = 'http://mysite.com'
+  this.url = 'http://mysite.com';
   this.body = 'Hello World';
   yield next;
 });
@@ -57,7 +61,7 @@ app.use(function *(next) {
 ```
 
 #### app.send(opts)
-Start fax and pass it options.
+Start fax and pass it options. [note: arguments aren't fully working yet]
 ```js
 app.send({
   method: 'get',
@@ -76,3 +80,6 @@ app.send({
 [coveralls-url]: https://coveralls.io/r/yoshuawuyts/fax?branch=master
 [downloads-image]: http://img.shields.io/npm/dm/fax.svg?style=flat-square
 [downloads-url]: https://npmjs.org/package/fax
+
+[setimmediate]: http://ghub.io/setimmediate
+[koaify]: https://github.com/yoshuawuyts/koaify
