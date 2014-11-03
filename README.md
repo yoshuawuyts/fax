@@ -83,4 +83,4 @@ app.send({
 
 [setimmediate]: http://ghub.io/setimmediate
 [koaify]: https://github.com/yoshuawuyts/koaify
-[browserify]: https://github.com/substack/browserify
+[browserify]: https://github.com/substack/node-browserify
