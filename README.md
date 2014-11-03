@@ -7,21 +7,14 @@
 Middleware stack for the client leveraging ES6 generators.
 Based off the brilliant work done in [Koa](http://koajs.com).
 
+Having a middleware stack in the client is not as strange as
+it might first seem. Like on the server there's a need to perform multiple
+layers of processing before a request is made. With Fax you can now just as
+easily compose your complete stack in the browser as you would on the server,
+building on the familiar API Koa provides.
+
 In order to run `fax` in today's browsers you need to provide a
-[setimmediate][setimmediate] shim and preprocess es6 generators to es5
-compatible code. Using [koaify][koaify] is recommended for this.
-```
-╔═════╗        ╔════════════╗       ╔════════╗       ╔═════════════════╗
-║ API ║<──────>║ Middleware ║──────>║ Stores ║──────>║ View Components ║
-╚═════╝        ╚════════════╝       ╚════════╝       ╚═════════════════╝
-                     ^                                        │
-                     │                                        │
-               ╔════════════╗                                 │
-               ║ Dispatcher ║                                 │
-               ╚════════════╝                                 │
-                     ^                                        │
-                     └────────────────────────────────────────┘
-```
+[setimmediate][setimmediate] shim. To run generators in the browser it's recommended to use [koaify][koaify] and [browserify][browserify].
 
 ## Installation
 ```sh
@@ -30,7 +23,7 @@ npm install fax
 
 ## Usage
 ```js
-var logger = require('koa-logger');
+var logger = require('fax-logger');
 var fax = require('fax');
 var app = fax();
 
@@ -41,7 +34,7 @@ app.use(function *(next) {
   yield next;
 });
 
-mw.send();
+app.send();
 ```
 
 ## API
@@ -61,13 +54,20 @@ app.use(function *(next) {
 ```
 
 #### app.send(opts)
-Start fax and pass it options. [note: arguments aren't fully working yet]
+Run the middleware with given options.
 ```js
 app.send({
   method: 'get',
-  name: 'books'
+  url: '/books'
 });
 ```
+
+## See also
+- [koa](http://koajs.com) (this project is 90% koa code)
+
+## Links
+- [Roadmap]()
+- [Wiki]()
 
 ## License
 [MIT](https://tldrlegal.com/license/mit-license)
@@ -83,3 +83,4 @@ app.send({
 
 [setimmediate]: http://ghub.io/setimmediate
 [koaify]: https://github.com/yoshuawuyts/koaify
+[browserify]: https://github.com/substack/browserify
