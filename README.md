@@ -14,7 +14,8 @@ easily compose your complete stack in the browser as you would on the server,
 building on the familiar API Koa provides.
 
 In order to run `fax` in today's browsers you need to provide a
-[setimmediate][setimmediate] shim. To run generators in the browser it's recommended to use [koaify][koaify] and [browserify][browserify].
+[setimmediate][setimmediate] shim. It's recommended to use [koaify][koaify] and
+[browserify][browserify] to enable ES6 generators and `require()`.
 
 ## Installation
 ```sh
@@ -62,12 +63,11 @@ app.send({
 });
 ```
 
-## See also
-- [koa](http://koajs.com) (this project is 90% koa code)
-
 ## Links
 - [Roadmap]()
+- [Docs]()
 - [Wiki]()
+- [Koa]()
 
 ## License
 [MIT](https://tldrlegal.com/license/mit-license)

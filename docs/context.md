@@ -27,7 +27,6 @@
 
   - `ctx.get()`
   - `ctx.status`
-  - `ctx.status=`
   - `ctx.message`
   - `ctx.message=`
   - `ctx.type=`

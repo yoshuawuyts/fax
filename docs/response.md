@@ -1,0 +1,9 @@
+## response.get()
+## response.status
+## response.message
+## response.message=
+## response.type=
+## response.type
+## response.headerReceived
+## response.lastModified
+## response.etag
