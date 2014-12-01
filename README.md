@@ -37,7 +37,7 @@ app.use(function *(next) {
 });
 
 app.send({
-  method: 'get',
+  method: 'GET',
   url: '/hi'
 });
 ```
