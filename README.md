@@ -30,44 +30,24 @@ var app = fax();
 
 app.use(logger());
 app.use(function *(next) {
-  this.url = 'http://mysite.com';
-  this.body = 'Hello World';
+  if ('/hi' == this.url) {
+    this.body = 'Hello Server';
+  }
   yield next;
 });
 
-app.send();
-```
-
-## API
-#### var app = fax()
-Initialize a new fax instance.
-```js
-var fax = require('fax');
-var app = fax();
-```
-
-#### app.use(generatorFn)
-Attach new middleware to fax. Takes a generator function as an argument.
-```js
-app.use(function *(next) {
-  this.body = 'Hello World';
-});
-```
-
-#### app.send(opts)
-Run the middleware with given options.
-```js
 app.send({
   method: 'get',
-  url: '/books'
+  url: '/hi'
 });
 ```
 
 ## Links
-- [Roadmap]()
-- [Docs]()
-- [Wiki]()
-- [Koa]()
+- [Roadmap](https://github.com/yoshuawuyts/fax/wiki)
+- [Middleware](https://github.com/yoshuawuyts/fax/wiki) list
+- [Docs](https://github.com/yoshuawuyts/fax/tree/master/docs)
+- [Wiki](https://github.com/yoshuawuyts/fax/wiki)
+- [Koa](https://github.com/koajs/koa)
 
 ## License
 [MIT](https://tldrlegal.com/license/mit-license)
