@@ -1,6 +1,6 @@
 {
   "name": "fax",
-  "version": "1.3.4",
+  "version": "1.3.5",
   "description": "Middleware stack for the client.",
   "main": "lib/index.js",
   "scripts": {
