@@ -33,12 +33,17 @@
     "xhr": "^1.16.1"
   },
   "devDependencies": {
-    "browserify": "^5.12.1",
+    "browserify": "^7.0.0",
     "coveralls": "^2.10.0",
+    "es6ify": "^1.5.1",
+    "fax-logger": "^1.1.1",
+    "http-server": "^0.7.3",
     "istanbul-harmony": "~0.3.0",
+    "koaify": "^1.0.2",
     "make-lint": "^1.0.1",
     "mocha": "^1.20.1",
     "proxyquire": "^1.0.1",
+    "setimmediate": "^1.0.2",
     "should": "^4.0.4",
     "test-console": "^0.7.1"
   },

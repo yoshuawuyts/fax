@@ -34,4 +34,14 @@ test-travis:
 		$(TESTS) \
 		--bail
 
-.PHONY: test
+example: example-build
+	@open example/index.html
+	@node node_modules/.bin/http-server \
+		--cors
+
+example-build:
+	@rm -rf build/
+	@mkdir build/
+	@node example/make.js
+
+.PHONY: test example
