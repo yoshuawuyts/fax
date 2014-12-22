@@ -1,7 +1,4 @@
-var context = require('../lib/context');
-var request = require('../lib/request');
-var response = require('../lib/response');
-var fax = require('..');
+var fax = require('..')
 
 exports = module.exports = function(opts, cb) {
   return fax().createContext(opts, cb);

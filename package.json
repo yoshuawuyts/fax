@@ -2,9 +2,9 @@
   "name": "fax",
   "version": "1.3.8",
   "description": "Middleware stack for the client.",
-  "main": "lib/index.js",
+  "main": "./index.js",
   "scripts": {
-    "test": "make test"
+    "test": "NODE_ENV=test node --harmony ./node_modules/.bin/tape index.js | tap-bail | tap-spec"
   },
   "repository": "yoshuawuyts/fax",
   "keywords": [
@@ -41,10 +41,12 @@
     "istanbul-harmony": "~0.3.0",
     "koaify": "^1.0.2",
     "make-lint": "^1.0.1",
-    "mocha": "^1.20.1",
     "proxyquire": "^1.0.1",
     "setimmediate": "^1.0.2",
     "should": "^4.0.4",
+    "tap-bail": "0.0.0",
+    "tap-spec": "^2.1.2",
+    "tape": "^3.0.3",
     "test-console": "^0.7.1"
   },
   "files": [

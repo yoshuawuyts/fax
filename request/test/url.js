@@ -4,7 +4,7 @@
  * Module dependencies
  */
 
-var context = require('../context');
+var context = require('../');
 
 /**
  * Test

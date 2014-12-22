@@ -5,7 +5,7 @@
  */
 
 var proxyquire = require('proxyquire');
-var fax = proxyquire('../lib/index', {xhr: xhrStub, '@noCallThru': true});
+var fax = proxyquire('../', {xhr: xhrStub, '@noCallThru': true});
 var err = false;
 
 /**

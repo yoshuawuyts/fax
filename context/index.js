@@ -1,15 +1,9 @@
-/**
- * Module dependencies.
- */
 
-var createError = require('http-errors');
-var delegate = require('delegates');
-var assert = require('assert');
+const createError = require('http-errors')
+const delegate    = require('delegates')
+const assert      = require('assert')
 
-/**
- * Prototype.
- */
-
+// Prototype
 var proto = module.exports = {
 
   /**
@@ -51,10 +45,7 @@ var proto = module.exports = {
   }
 };
 
-/**
- * Request delegation.
- */
-
+// Request delegation.
 delegate(proto, 'request')
   .method('set')
   .getter('hostname')
@@ -63,12 +54,9 @@ delegate(proto, 'request')
   .access('queryString')
   .access('method')
   .access('body')
-  .access('url');
+  .access('url')
 
-/**
- * Response delegation.
- */
-
+// Response delegation.
 delegate(proto, 'response')
   .method('get')
   .access('status')
@@ -77,4 +65,4 @@ delegate(proto, 'response')
   .getter('header')
   .getter('headers')
   .getter('lastModified')
-  .getter('etag');
+  .getter('etag')

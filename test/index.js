@@ -1,11 +1,7 @@
 /*eslint no-unused-expressions: 0*/
 
-/**
- * Module dependencies
- */
-
 var stderr = require('test-console').stderr;
-var fax = require('../lib/index');
+var fax = require('../');
 var assert = require('assert');
 var AssertionError = assert.AssertionError;
 
