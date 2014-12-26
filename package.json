@@ -4,7 +4,7 @@
   "description": "Middleware stack for the client.",
   "main": "./index.js",
   "scripts": {
-    "test": "NODE_ENV=test node --harmony ./node_modules/.bin/tape index.js | tap-bail | tap-spec"
+    "test": "NODE_ENV=test node --harmony ./node_modules/.bin/tape index.js | tap-bail | faucet"
   },
   "repository": "yoshuawuyts/fax",
   "keywords": [
@@ -36,6 +36,7 @@
     "browserify": "^7.0.0",
     "coveralls": "^2.10.0",
     "es6ify": "^1.5.1",
+    "faucet": "0.0.1",
     "fax-logger": "^1.1.1",
     "http-server": "^0.7.3",
     "istanbul-harmony": "~0.3.0",
@@ -45,7 +46,6 @@
     "setimmediate": "^1.0.2",
     "should": "^4.0.4",
     "tap-bail": "0.0.0",
-    "tap-spec": "^2.1.2",
     "tape": "^3.0.3",
     "test-console": "^0.7.1"
   },
