@@ -1,26 +1,9 @@
-/**
- * Module dependencies.
- */
 
-var fax = require('../../')
+const context = require('../context').context
+const test    = require('tape')
 
-/**
- * Test.
- */
-
-describe('ctx.throw(err)', function() {
-  it('should throw an error', function(done) {
-    var app = fax();
-
-    app.use(function *() {
-      try {
-        this.throw('boom');
-      } catch(e) {
-        e.message.should.eql('boom');
-        done();
-      }
-    });
-
-    app.send();
-  });
-});
+test('ctx.throw() should throw an error', function(t) {
+  t.plan(1)
+  const ctx = context()
+  t.throws(ctx.throw.bind(ctx, 'boom'), 'boom')
+})
