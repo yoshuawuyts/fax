@@ -4,7 +4,7 @@
   "description": "Middleware stack for the client.",
   "main": "lib/index.js",
   "scripts": {
-    "test": "make test"
+    "test": "NODE_ENV=test browserify -t 6to5ify ./test.js | smokestack | faucet"
   },
   "repository": "yoshuawuyts/fax",
   "keywords": [
@@ -33,10 +33,12 @@
     "xhr": "^1.16.1"
   },
   "devDependencies": {
-    "browserify": "^7.0.0",
+    "6to5": "^2.0.4",
+    "6to5ify": "^3.0.0",
+    "browserify": "^8.0.1",
     "coveralls": "^2.10.0",
-    "es6ify": "^1.5.1",
     "fax-logger": "^1.1.1",
+    "global": "^4.3.0",
     "http-server": "^0.7.3",
     "istanbul-harmony": "~0.3.0",
     "koaify": "^1.0.2",
@@ -45,6 +47,7 @@
     "proxyquire": "^1.0.1",
     "setimmediate": "^1.0.2",
     "should": "^4.0.4",
+    "smokestack": "^3.0.0",
     "test-console": "^0.7.1"
   },
   "files": [
